@@ -22,8 +22,7 @@ class Server {
      };
 
      middleware() {
-          /*this.app.use(express.static(path.resolve(__dirname, '../public')));
-*/
+          
           this.app.use(cors());
           this.app.use(express.json());
           this.app.use((req, res, next) => {
