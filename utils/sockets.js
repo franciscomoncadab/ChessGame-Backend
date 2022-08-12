@@ -7,16 +7,27 @@ class Sockets {
 
      socketEvents() {
           this.io.on('connect', (socket) => {
-               console.log('Connecting client 1', socket.id);
+               console.log('Conectado', socket.id);
                
-               socket.on('conectando', () => {
-                    console.log('Connecting client 2')})
-
-               socket.emit('result');
-               
-               socket.on('movingPiece', (x, y) => {
-                    console.log({x, y})
+               socket.on('conectando desde frontend', () => {
+                    console.log('Conectando desde front')
+                    socket.emit('result');
                })
+               
+               socket.on('updateGrabPieces', () => {
+                    console.log('grabPieces desde frontend');
+                    socket.emit('grabPiecesBackend');
+               });
+
+               /*socket.on('updateMovePieces', () => {
+                    console.log('movePieces desde frontend');
+                    socket.emit('movePiecesBackend')
+               });*/
+
+               socket.on('updateDropPieces', (pieces) => {
+                    console.log('dropPieces desde frontend', pieces);
+                    socket.emit('dropPiecesBackend', pieces)
+               });
                
           })
      };
