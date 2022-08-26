@@ -7,13 +7,8 @@ class Sockets {
 
      socketEvents() {
           this.io.on('connect', (socket) => {
-               console.log('Conectado', socket.id);
-               
-               socket.on('conectando desde frontend', () => {
-                    console.log('Conectando desde front')
-                    socket.emit('result');
-               })
-               
+               console.log('Conectado a socketio', socket.id);
+                             
                socket.on('updateGrabPieces', () => {
                     console.log('grabPieces desde frontend');
                     socket.emit('grabPiecesBackend');
@@ -26,7 +21,7 @@ class Sockets {
 
                socket.on('updateDropPieces', (pieces) => {
                     console.log('dropPieces desde frontend', pieces);
-                    socket.emit('dropPiecesBackend', pieces)
+                    this.io.emit('dropPiecesBackend', pieces)
                });
                
           })

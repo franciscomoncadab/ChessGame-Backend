@@ -13,6 +13,7 @@ class Server {
           this.server = http.createServer(this.app);
 
           this.io = new ServerIO(this.server, {
+               transports: ["websocket"],
                cors: {
                     origin: '*',
                     method: ['GET, POST']
