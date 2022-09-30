@@ -19,9 +19,9 @@ class Sockets {
                     socket.emit('movePiecesBackend')
                });*/
 
-               socket.on('updateDropPieces', (pieces) => {
-                    console.log('dropPieces desde frontend', pieces);
-                    this.io.emit('dropPiecesBackend', pieces)
+               socket.on('updateDropPieces', (updatePieces) => {
+                    console.log('dropPieces desde frontend');
+                    this.io.emit('dropPiecesBackend', updatePieces)
                });
                
           })
