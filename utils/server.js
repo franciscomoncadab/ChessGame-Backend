@@ -27,7 +27,7 @@ class Server {
           this.app.use(cors());
           this.app.use(express.json());
           this.app.use((req, res, next) => {
-               res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+               res.setHeader('Access-Control-Allow-Origin', process.env.REACT_APP_FRONTEND);
                res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PACH, DELETE');
                res.setHeader('Access-Control-Allow-Headers', '*');
 
